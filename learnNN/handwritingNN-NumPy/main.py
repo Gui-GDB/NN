@@ -66,14 +66,14 @@ def train(epochs, inputs, outputs, weights, lr):
 	"""
 	losses = []
 	# 执行 100 个 epoch 内执行前向传播和反向传播。
-	for epoch in range(epochs):
+	for epoch in range(1, epochs + 1):
 		weights, loss = update_weights(inputs, outputs, weights, lr)
 		losses.append(loss)
 	return losses, weights
 
 
 if __name__ == '__main__':
-	parser = argparse.ArgumentParser(description='手写简单的神经网络')
+	parser = argparse.ArgumentParser(description='NumPy 手写简单的神经网络')
 	parser.add_argument('--lr', '-l', type=float, default=0.005, help='learning rate')
 	parser.add_argument('--epochs', '-e', type=int, default=100, help='number of epochs')
 	parser.add_argument('--seed', '-s', type=int, default=2003, help='random seed')
@@ -86,7 +86,6 @@ if __name__ == '__main__':
 	# 设置随机初始化种子
 	np.random.seed(args.seed)
 	# 随机初始化权重
-
 	weights = [
 		# 第一个参数数组对应于将输入层连接到隐藏层的 2x3 权重矩阵
 		np.random.random((2, 3)),
